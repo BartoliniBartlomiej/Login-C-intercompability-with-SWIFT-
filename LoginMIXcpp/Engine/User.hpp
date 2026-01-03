@@ -26,9 +26,10 @@ public:
     }
     
     //getters
-    std::string getLogin() {return login;}
-    std::string getPin() {return pin;}
-    std::string getId() {return id;}
+    std::string getPin() const {return pin;}
+    std::string getId() const {return id;}
+    std::string getLogin() const {return login;}
+    
 };
 
 #endif /* User_h */

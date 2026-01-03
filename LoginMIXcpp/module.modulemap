@@ -1,0 +1,13 @@
+//
+//  module.modulemap
+//  LoginMIXcpp
+//
+//  Created by Bartłomiej Kuś on 03/01/2026.
+//
+
+module CppLogic {
+    header "Engine/UserBase.hpp"
+    header "Engine/User.hpp"
+
+    export *
+}

@@ -13,10 +13,10 @@
 int main(int argc, const char * argv[]) {
     
     
-    UserBase base;
+    UserBase base("users.csv");
 
-    User u("211", "Kacpercper", "2137");
-    base.addUser(u);
+//    User u("211", "Kacpercper", "2137");
+//    base.addUser(u);
     
     base.printBase();
     

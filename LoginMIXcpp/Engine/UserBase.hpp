@@ -16,8 +16,10 @@
 class UserBase{
 private:
     std::vector<User> users;
+    std::string dbPath;
+    
 public:
-    UserBase();
+    UserBase(std::string path);
     void update();
     
     
@@ -31,7 +33,7 @@ public:
     void printBase();
     
     //getters
-    std::vector <User> getUsers()   {return users;  }
+    std::vector <User> getUsers() const {return users;  }
     
     void loadFromCSV();
     void appendUserToCSV(User& user);

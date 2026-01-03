@@ -6,8 +6,8 @@
 //
 #include "UserBase.hpp"
 
-UserBase::UserBase(){
-    loadFromCSV();
+UserBase::UserBase(std::string path) : dbPath(path) {
+    loadFromCSV(); // Ładujemy dane z przekazanej lokalizacji
 }
 
 //void UserBase::addUser(User _user, bool addedToCSV = 0) {
@@ -24,11 +24,8 @@ void UserBase::printBase(){
 }
 
 void UserBase::loadFromCSV(){
-    const std::string& filePath = "/Users/bartek/Coding/SWIFT/LoginMIXcpp/LoginMIXcpp/UserBase/users.csv";
-    std::ifstream file(filePath);
-    if (!file.is_open()) {
-        return; // silently no-op if file can't be opened
-    }
+    std::ifstream file(dbPath); // Używamy dynamicznej ścieżki
+    if (!file.is_open()) return;
     
     std::string line;
     std::getline(file, line);
@@ -45,11 +42,9 @@ void UserBase::loadFromCSV(){
 
 void UserBase::appendUserToCSV(User& user) {
     
-    const std::string& filePath = "/Users/bartek/Coding/SWIFT/LoginMIXcpp/LoginMIXcpp/UserBase/users.csv";
-    std::ofstream out(filePath, std::ios::app);
-    if (!out.is_open()) {
-        return; // silently no-op if file can't be opened
-    }
+    std::ofstream out(dbPath, std::ios::app); // Używamy dynamicznej ścieżki
+    if (!out.is_open()) return;
+    
     // Append as: id,login,password (pin)
     // Assuming User has getters: getId(), getLogin(), getPin()
     out << user.getId() << "," << user.getLogin() << "," << user.getPin() << "\n";
